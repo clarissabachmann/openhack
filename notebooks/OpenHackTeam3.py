@@ -2,7 +2,7 @@
 from pyspark.sql.functions import lit
 from datetime import datetime
 from pyspark.sql.functions import *
-
+df = 45
 df1 = spark.read.csv("abfss://team3datalakeroot@team3openhack.dfs.core.windows.net/SQLInputSales/Addresses.txt", header = True)
 df2 = spark.read.csv("abfss://team3datalakeroot@team3openhack.dfs.core.windows.net/SQLInputSales/Customers.txt", header = True)
 df3 = df1.join(df2, df1.CustomerID == df2.CustomerID).select(df1.CustomerID, df2.LastName, df2.FirstName, df1.AddressID, df1.AddressLine1, df1.AddressLine2, df1.City, df1.State, df1.ZipCode, df2.PhoneNumber, df1.CreatedDate, df1.UpdatedDate)
